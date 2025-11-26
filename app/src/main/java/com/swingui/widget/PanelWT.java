@@ -3,16 +3,15 @@ package com.swingui.widget;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
-import java.awt.Window;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.function.Consumer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import com.swingui.value.UIValue;
+import com.swingui.widget.util.WidgetHelper;
 
 /**
  * {@link JPanel} を拡張した {@link Widget} 実装クラス
@@ -122,7 +121,7 @@ public class PanelWT extends JPanel implements Widget<PanelWT>
     public PanelWT focus(UIValue<Boolean> hasFocus)
     {
         this.hasFocus = hasFocus;
-        this.hasFocus.addValueChangeListener(() -> invokeToRefreshWT());
+        this.hasFocus.addValueChangeListener(() -> WidgetHelper.invokeToRefresh(PanelWT.this));
         if(hasFocus.get()) requestFocusInWindow();
         return this;
     }
@@ -131,21 +130,9 @@ public class PanelWT extends JPanel implements Widget<PanelWT>
     public PanelWT background(UIValue<Color> bgColor)
     {
         this.bgColor = bgColor;
-        this.bgColor.addValueChangeListener(() -> invokeToRefreshWT());
+        this.bgColor.addValueChangeListener(() -> WidgetHelper.invokeToRefresh(PanelWT.this));
         setBackground(bgColor.get());
         return this;
-    }
-
-    /**
-     * フレームやダイアログまで遡り、全体のコンポーネントの更新を行う。
-     */
-    private void invokeToRefreshWT()
-    {
-        Window w = SwingUtilities.getWindowAncestor(PanelWT.this);
-        if(w != null)
-        {
-            if(w instanceof Framer) ((Framer)w).refreshWT();
-        }
     }
 
     @Override
