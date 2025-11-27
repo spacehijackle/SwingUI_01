@@ -1,6 +1,7 @@
 package com.swingui.front;
 
-import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JComponent;
 
@@ -50,7 +51,20 @@ public class Frame
         Framer frame = new Framer(title);
         if(child != null)
         {
-            frame.getContentPane().add(child, BorderLayout.CENTER);
+            /*↓ウィンドウ拡大しても子コンポーネントを中心に配置させるため書き換え
+            frame.getContentPane().add(child, BorderLayout.CENTER);*/
+
+            GridBagLayout layout = new GridBagLayout();
+            frame.getContentPane().setLayout(layout);
+
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            gbc.weightx = 1.0;
+            gbc.weighty = 1.0;
+            gbc.anchor = GridBagConstraints.CENTER;
+            gbc.fill = GridBagConstraints.NONE; // child 自体はリサイズ不可
+            frame.getContentPane().add(child, gbc);
         }
 
         //

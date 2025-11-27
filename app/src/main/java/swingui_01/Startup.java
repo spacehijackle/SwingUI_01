@@ -40,7 +40,11 @@ public class Startup
         (
             "SwingUI Layout Sample",
 
-            (f) -> f.setResizable(true),
+            (f) ->
+            {
+                f.setResizable(true);    // 画面リサイズ可能
+                f.setSize(400, 300); // 初期画面サイズ指定
+            },
 
             VStack.of
             (
@@ -59,7 +63,7 @@ public class Startup
 
                 text("BOTTOM")
             )
-            .frame(400, 300)
+            //.frame(400, 300)
             .padding(UIDefaults.COMPONENT_GAP)
             .background(UIValue.of(Color.cyan))
         );
@@ -74,7 +78,11 @@ public class Startup
         (
             "SwingUI Layout Sample",
 
-            (f) -> f.setResizable(true),
+            (f) ->
+            {
+                f.setResizable(true);    // 画面リサイズ可能
+                f.setSize(400, 300); // 初期画面サイズ指定
+            },
 
             HStack.of
             (
@@ -93,7 +101,7 @@ public class Startup
 
                 text("RIGHT")
             )
-            .frame(400, 300)
+            //.frame(400, 300)
             .padding(UIDefaults.COMPONENT_GAP)
             .background(UIValue.of(Color.yellow))
         );
