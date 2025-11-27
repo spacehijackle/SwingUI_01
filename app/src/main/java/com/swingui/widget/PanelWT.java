@@ -51,8 +51,8 @@ public class PanelWT extends JPanel implements Widget<PanelWT>
     @Override
     public void dispose()
     {
-        hasFocus.dispose();
-        bgColor.dispose();
+        hasFocus = UIValue.of(null);
+        bgColor = UIValue.of(null);
     }
 
     /**
