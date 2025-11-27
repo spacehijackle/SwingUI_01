@@ -50,9 +50,16 @@ public class VStack
      */
     private static PanelWT init(UIAlignmentX alignmentX, JComponent... components)
     {
+        /*
+         * Box.createGlue() について
+         *
+         * これを追加するとウィンドウを拡大した際、子コンポーネントのサイズが拡大に合わせて
+         * いっぱいに広がらないため（JList, ListBoxWT等）、使用しない方針である。
+         */
+
         PanelWT panel = new PanelWT();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.add(Box.createGlue());  // フレームが広がった場合の上部調整用スペース
+        //panel.add(Box.createGlue());  // フレームが広がった場合の上部調整用スペース
         for(int i=0; i<components.length; i++)
         {
             JComponent c = components[i];
@@ -68,7 +75,7 @@ public class VStack
                 panel.add(Box.createRigidArea(new Dimension(0, UIDefaults.COMPONENT_GAP)));
             }
         }
-        panel.add(Box.createGlue());  // フレームが広がった場合の下部調整用スペース
+        //panel.add(Box.createGlue());  // フレームが広がった場合の下部調整用スペース
 
         return panel;
     }
