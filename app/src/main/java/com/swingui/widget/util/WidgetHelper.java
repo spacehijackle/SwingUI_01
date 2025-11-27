@@ -18,10 +18,8 @@ public class WidgetHelper
     /**
      * ウィジェットが属するフレームまで遡り、下位コンポーネント全体の更新を行う。
      */
-    public static void invokeToRefresh(Widget<?> widget)
+    public static <T extends JComponent> void invokeToRefresh(Widget<T> widget)
     {
-        if(widget instanceof JComponent == false) return;
-
         Window w = SwingUtilities.getWindowAncestor((JComponent)widget);
         if(w != null)
         {
