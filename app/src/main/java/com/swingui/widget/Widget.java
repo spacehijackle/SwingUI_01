@@ -75,7 +75,7 @@ public interface Widget<T extends JComponent>
     /**
      * 保持しているリソースを破棄する。
      * 
-     * @warning このメソッド内で自身で保持している UIValue.dispose() の呼出しはしないこと。
+     * @warning このメソッド内で自身で保持している UIValue#dispose() の呼出しはしないこと。
      *          UIValue を共有している他のクラスに影響を与える可能性があるため。
      */
     void dispose();
