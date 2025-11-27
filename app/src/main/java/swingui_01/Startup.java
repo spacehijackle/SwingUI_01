@@ -63,7 +63,7 @@ public class Startup
 
                 text("BOTTOM")
             )
-            //.frame(400, 300)
+            .frame(400, 300)
             .padding(UIDefaults.COMPONENT_GAP)
             .background(UIValue.of(Color.cyan))
         );
@@ -101,7 +101,7 @@ public class Startup
 
                 text("RIGHT")
             )
-            //.frame(400, 300)
+            .frame(400, 300)
             .padding(UIDefaults.COMPONENT_GAP)
             .background(UIValue.of(Color.yellow))
         );
